@@ -1,0 +1,62 @@
+<script>
+    function ask(question,...handlers){
+        // // let isYes = confirm(question)
+        // for(let handler of handlers){
+        //     if(handler.length === 0){
+        //         if(isYes) handler()
+        //     }else{
+        //         handler(isYes)
+        //     }
+        // }
+        ask.count++
+    }
+    ask.count = 0
+    ask(
+        'Question?',
+        ()=>alert('You said Yes'),
+        result=>alert(result)
+    )
+    ask()
+    ask()
+    // console.dir(ask)
+    function makeCounter(){
+        function counter(){
+            return ++counter.count
+        }
+        counter.count = 0
+        counter.set = (value) => counter.count = value
+        counter.decrease = () => --counter.count
+        return counter
+    }
+    let counter = makeCounter()
+    // console.log(counter())
+    // counter.set(10)
+    // console.log(counter())
+    // console.log(counter.decrease())
+    // console.log(counter.decrease())
+
+    // let obj = {
+    //     value : 0,
+    //     sum : function all(num){
+    //         obj.value += num
+    //         return all
+    //     }
+    // }
+    // let sum = obj.sum
+    // sum(1)(2)(3)(4)
+    // console.log(obj.value)
+    let sum = function(num){
+        let a = num
+        function to(num){
+            a += num
+            return to
+        }
+        to.toString = function(){
+            console.log(a)
+            return a
+        }
+        return to
+    }
+    // let num = sum(1)(2)(3)(4)(5)
+    // alert(num)
+</script> 

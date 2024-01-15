@@ -1,0 +1,25 @@
+<script>
+    class CoffeeMachine{
+        _waterAmount = 0
+        constructor(power){
+            this._power = power
+            // console.log(`Create a coffee-machine, power ${power}`)
+        }
+        get power(){
+            return this._power
+        }
+        set waterAmount(value){
+            if(value < 0){
+                value = 0
+            }
+            this._waterAmount = value
+        }
+        get waterAmount(){
+            return this._waterAmount
+        }
+    }
+    let coffeeMachine = new CoffeeMachine(100)
+    coffeeMachine.waterAmount = -10
+    coffeeMachine.power = 25
+    console.log(coffeeMachine.power)
+</script>

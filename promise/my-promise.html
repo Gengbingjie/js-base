@@ -1,0 +1,19 @@
+<script>
+class MyPromise{
+    static states = 'pending'
+    constructor(handler){
+        this.handler = handler
+        this.result = handler()
+    }
+    then(func){
+        states = 'onfullfilled'
+        return func.apply(this,result)
+    }
+
+}
+let mypromise = new Promise((resolve,reject)=>{
+    setTimeout(()=>resolve(true),1000)
+})
+// console.log(mypromise)
+mypromise.then(res=>console.log(res))
+</script>

@@ -1,0 +1,11 @@
+<script>
+    class PowerArray extends Array{
+        isEmpty(){
+            return this.length === 0
+        }
+    }
+    let arr = new PowerArray(1,2,3,4,5,11)
+    console.log(arr.isEmpty())
+    arr = arr.filter(item=>item>10)
+    console.log(arr)
+</script>

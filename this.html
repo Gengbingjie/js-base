@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script type="text/javascript">
+    // let calculator = {
+    //     read(a, b) {
+    //         this.a = +prompt('a:', 0)
+    //         this.b = +prompt('b:', 0)
+    //     },
+    //     sum() {
+    //         return this.a + this.b
+    //     },
+    //     mul() {
+    //         return this.a * this.b
+    //     }
+    // }
+    // calculator.read();
+    // console.log(calculator.sum())
+    // console.log(calculator.mul())
+    let ladder = {
+        step: 0,
+        up() {
+            this.step++
+            return this
+        },
+        down() {
+            this.step--
+            return this
+        },
+        showStep() {
+            console.log(this.step)
+            return this
+        }
+    }
+    // ladder.up().up().down().showStep().down().showStep()
+    function User(name) {
+        this.name = name;
+        this.isAdmin = false;
+    }
+    let user = new User('Jack')
+    console.log(user.name)
+    console.log(user.isAdmin)
+    /*
+        new 操作符步骤
+        1、一个新的空对象被创建并分配给this                 this = {}
+        2、函数体执行。通常它会修改this，并为其添加新属性     this.name = name;this.isAdmin = false
+        3、返回this的值                                 return this
+    */
+
+    let str = 'hello';
+    str.test = 5;
+    console.log(str.test)
+</script>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    (function closuer() {
+        console.log(users)
+    })()
+    let name = "Tencent";
+    (function () {
+        if (typeof name === 'undefined') {
+            let name = 'uLink'
+            console.log(111)
+            console.log('Hi ' + name)
+        } else {
+            console.log(222)
+            console.log("hello " + name)
+        }
+    })()
+    {
+        let message = 'this is a message'
+        console.log(message)
+    }
+    // console.log(message)
+    function makeCount() {
+        let count = 0;
+        return function () {
+            return count++
+        }
+    }
+    let counter = makeCount();
+    console.dir(counter)  //0
+    console.log(counter())  //1
+    console.log(counter())  //2
+
+    let phrase = "Hello";
+    console.log(sayHiii)
+    if (true) {
+        let user = "John";
+        function sayHiii() {
+            console.log(`${phrase}, ${user}`);
+        }
+    }
+    sayHiii();
+    function summm(a) {
+        return function (b) {
+            return a + b
+        }
+    }
+    console.log(summm(1)(2))
+    console.log(summm(5)(-1))
+
+    let xx = 1;
+    function func() {
+        console.log(xx)
+        let x = 2;
+    }
+    console.dir(func)
+
+    function makeArmy() {
+        let shooters = [];
+
+        let i = 0;
+        while (i < 10) {
+            let a = i;
+            let shooter = function () { // 创建一个 shooter 函数，
+                console.log(a); // 应该显示其编号
+            };
+            shooters.push(shooter); // 将此 shooter 函数添加到数组中
+            i++;
+        }
+
+        // ……返回 shooters 数组
+        return shooters;
+    }
+    let army = makeArmy();
+    army[0]()
+    army[1]()
+</script>

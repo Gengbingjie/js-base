@@ -1,0 +1,28 @@
+<script>
+    new Promise((resolve,reject)=>{
+        throw new Error('something wrong')
+    }).catch(err=>{
+        console.log('catch throw wrong')
+    }).then(res=>{
+        console.log('then event dealed')
+    })
+
+    // new Promise(function(){
+    //     noneFunc()
+    // }).then(res=>console.log('no catch'))
+
+    
+
+    new Promise(function(resolve,reject){
+        resolve(true)
+    })
+    .then(res=>{
+        setTimeout(()=>balabala(),1000)
+    })
+    .catch(err=>console.log(err))
+
+    window.addEventListener('unhandledrejection', function(event){
+        console.log(event.promise)
+        console.log(event.reason)
+    })
+</script>

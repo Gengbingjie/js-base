@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    console.log('------------数组方法使用------------------')
+    /*  常用：
+        splice      //添加、删除、插入，会改变原数组
+        slice       //返回新数组，不改变原数组
+        concat
+        forEach
+        indexOf/lastIndexOf/includes
+        find/findIndex/findLastIndex        //find 找到符合条件的元素 返回的是元素
+        filter                              //过滤出符合条件的数组元素 返回的是数组（包含元素）
+        map
+        sort compareFn()字符串比较 a.localeCompare(b)
+        reverse
+        split 和 join
+        reduce/reduceRight
+        Array.isArray   判断是否是数组
+        不常用：
+        some/every      some遇到true返回true,every遇到false返回false，
+        fill        arr.fill(value, start, end) 从索引 start 到 end，用重复的 value 填充数组
+        copyWithin(target,start,end)
+        flat/flatMap
+    */
+    let users = [
+        { id: 1, name: "John" },
+        { id: 2, name: "Pete" },
+        { id: 3, name: "Mary" },
+        { id: 4, name: "Tom" },
+        { id: 5, name: "Eric" }
+    ];
+    console.log(users.find(i => i.id === 1))
+    console.log(users.findIndex(i => i.name === 'John'))
+    console.log(users.findLastIndex(i => i.name === 'John'))
+    console.log(users.filter(i => i.id === 1))
+    console.log(users.map(item => JSON.stringify(item)))
+    console.log(users.sort(compare))
+    function compare(a, b) {
+        return a.name.localeCompare(b.name)
+    }
+</script>

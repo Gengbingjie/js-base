@@ -1,0 +1,47 @@
+<script>
+    class Thenable{
+        constructor(num){
+            this.num = num
+        }
+        then(resolve,reject){
+            console.log(resolve)
+            setTimeout(()=>resolve(this.num*2),1000)
+        }
+    }
+    // async function f(){
+    //     let result = await new Thenable(1)
+    //     console.log(result)
+    // }
+    // f()
+    // new Thenable(1).then(res=>{
+    //     console.log(res)
+    // })
+
+    //任务一
+    const loadScript = async (url) => {
+        let result = await fetch(url)
+        if(result.status == 200){
+            let json = await result.json()
+            return json
+        }
+        throw new Error(result.status);
+    }
+    // (async ()=>{
+    //     try{
+    //         let result = await loadScript('https://javascript.info/no-such-user.json')
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // })()
+
+    //任务三
+    async function wait() {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        return 10;
+    }
+    function f(){
+        wait().then(res=>console.log(res))
+    }
+    f()
+</script>
