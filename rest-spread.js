@@ -1,5 +1,5 @@
-function fn(){
-    console.log(arguments.length)
+function fn(...args){
+    console.log(...args)
     for(let key of arguments){
         console.log(key)
     }
