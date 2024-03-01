@@ -1,19 +1,74 @@
 <script>
 class MyPromise{
+    static PENDINGSTATUS = 'pending'
+    static FULLFILLEDSTATUS = 'Fullfilled'
+    static REJECTEDSTATUS = 'Rejected'
     static states = 'pending'
+    static result
+    static thenCallbacks = []
+    static catchCallbacks = []
     constructor(handler){
-        this.handler = handler
-        this.result = handler()
+        let self = this
+        let resolve = function(result){
+            if(MyPromise.states === MyPromise.PENDINGSTATUS){
+                MyPromise.states = 'Fullfilled'
+                MyPromise.result = result
+                MyPromise.thenCallbacks.forEach(fn => {
+                    fn(MyPromise.result)
+                });
+            }
+        }
+
+        let reject = function(err){
+            if(MyPromise.states === MyPromise.PENDINGSTATUS){
+                MyPromise.states = 'Rejected'
+                MyPromise.result = err
+                MyPromise.catchCallbacks.forEach(fn => {
+                    fn(MyPromise.result)
+                });
+            }
+        }
+
+        handler(resolve, reject)
+
     }
-    then(func){
-        states = 'onfullfilled'
-        return func.apply(this,result)
+    then(resolveCallback,rejectedCallback){
+        return new MyPromise((resolve, reject)=>{
+            if(MyPromise.states === MyPromise.PENDINGSTATUS){
+                MyPromise.thenCallbacks.push(resolveCallback)
+                MyPromise.catchCallbacks.push(rejectedCallback)
+            }else if(MyPromise.states === MyPromise.FULLFILLEDSTATUS){
+                resolveCallback(MyPromise.result)
+            }else if(MyPromise.states === MyPromise.FULLFILLREJECTEDSTATUSEDSTATUS){
+                rejectedCallback(MyPromise.result)
+            }
+        })
+        
+    }
+    catch(rejectedCallback){
+        if(MyPromise.states === MyPromise.PENDINGSTATUS){
+            MyPromise.catchCallbacks.push(rejectedCallback)
+        }else{
+            rejectedCallback(MyPromise.result)
+        }
     }
 
 }
-let mypromise = new Promise((resolve,reject)=>{
-    setTimeout(()=>resolve(true),1000)
+console.log("第一步")
+let m1 = new MyPromise((resolve, reject) => {
+    console.log("第二步")
+    setTimeout(() => {
+        resolve('这次一定成功')
+        reject('下次')
+        console.log("第四步")
+    })
+});
+setTimeout(()=>{
+    console.log('宏任务')
 })
-// console.log(mypromise)
-mypromise.then(res=>console.log(res))
+m1.then(
+    res => { console.log(res) },
+    res => { console.log(res) }
+)
+console.log("第三步")
 </script>
